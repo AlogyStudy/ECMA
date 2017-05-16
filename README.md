@@ -1,0 +1,2 @@
+# ECMA
+ECMAScript syntax
