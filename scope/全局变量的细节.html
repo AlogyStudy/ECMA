@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 在全局作用域中，带var和不带var的关系
+    // 区别：带var的可以进行预解析，所以在赋值的前面执行不会报错；
+    //  不带var的是不能进行预解析的，在前面使用该变量名会报错。
+
+    // console.log(num); // undefiend
+    // var num = 10;
+    // console.log(num2); // 报错
+    // num2 = 10;
+
+    
+
+    // 关系: num2=10; --> 相当于给window增加了一个叫做num2的属性名，属性值是10
+    // var num=10; --> 首先它相当于给全局作用域增加了一个全局变量num，但是不仅如此，也相当于给window增加了一个属性num,属性值10
+    // 先判断是否是全局变量，如果是就输出;如果不是会再去判断是否是window地下的属性。
+    var num = 10;
+    console.log(num); // 10
+    console.log(window.num); // 10
+
+    num2 = 10;
+    console.log(num2); // 10 // window.num2
+    console.log(window.num2); // 10
+
+  </script>
+
+</body>
+</html>

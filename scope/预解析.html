@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 预解析
+    // 在当前的作用域中，JS代码执行之前，浏览器首先会默认的把所有的带var，和function的进行提前的声明或定义
+    // 声明 (declare) // 告知浏览器在全局作用域中有一个 变量名 为 xxx 的变量。
+    // 定义 (defined) // 对变量进行赋值
+
+    // 对于带var 和 function 关键字的在预解析的时候操作
+    // var -> 在预解析的时候只是提前声明了
+    // function -> 在预解析的时候提前的声明了 + 定义 都完成了。
+
+
+    // 预解析只发生在当前的作用域下进行解析。
+    // 一开始只会对widnow环境下的进行预解析，只有函数执行的时候才会对函数中的进行解析
+
+
+
+    // JS内存的分类
+    // 栈内存: 用来提供一个供JS代码执行的环境 --> 作用域  （全局作用域/私有的作用域）  
+    // 堆内存: 用来存储引用数据类型的值 --> 对象存储的是属性名和属性值，函数存储的是代码字符串
+    
+  </script>
+
+</body>
+</html>
