@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /**
+     *  预解析机制
+     */
+
+      // in："num" in window 判断num是否为window这个对象的一个属性，是的话返回true，不是返回false
+
+      // 预解析的时候不管你的条件是否成立，都要把带var的进行提前声明
+      // if (!('num' in window)) { // 预解析，var num --> window.num  // 'num' in window 为true
+      //   var num = 12;
+      // }
+      // console.log(num);  // undefined
+
+
+
+
+
+      // fn(); // 报错
+      // var fn = function() { // 匿名函数之函数表达式 // 把函数定义的部分当作一个值赋给变量/元素的某一个事件
+      //   console.log('ok');
+      // }
+      // fn(); // ok
+
+
+      // fn(); // ok
+      // function fn() {
+      //   console.log('ok');
+      // }
+      // fn(); // ok
+
+
+      // 自执行函数：定义和执行一起完成
+      // 自执行函数在全局作用域下不解释，当代码执行到当前位置的时候定义和执行一起完成了。
+      // (function(num) {})(100);
+      // ~function(num) {}(100);
+      // !function(num) {}(100);
+      // +function(num) {}(100);
+      // !function(num) {}(100);
+
+
+
+
+      // 函数体中reutrn下面的代码虽然不在执行了，但是需要进行预解析
+      // return 后边的函数是返回值，并不需要预解析。
+      // function fn() {
+      //   console.log(num); // undefined
+      //   return function aa() { console.log(this); } // return 跟着的语句不会预解析
+      //   var num = 100;
+      // }
+
+      // var t = fn();
+      // console.log(t());
+
+
+
+
+
+      // 预解析：var fn; window.fn; fn=ofxxx window.fn=ofxxx
+      // 在JS中如果变量名和函数名重复，是冲突。函数级别高，使用的是函数。
+      // console.log(fn);
+      // function fn() {
+      // }
+      // var fn = 10;
+      
+
+      // console.log(fn);
+      // var fn = 10;
+      // function fn() {
+      // }
+      
+      // console.log(fn); // function fn() {console.log(2);}
+      // 声明 + 定义： fn: oxfff11
+      // 声明：var fn;(不需要重新声明)
+      // 声明 + 定义: fn: oxfff222
+      // ---> fn: oxfff222
+      fn(); // 2
+      function fn() {console.log(1);}
+      fn(); // 2
+      var fn = 10; // 修改作用域值
+      fn(); // 报错
+      function fn() {console.log(2);}
+      fn(); // 停止执行
+
+
+  </script>
+
+</body>
+</html>
