@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // this
+    // 在JS中主要研究都是函数中的this
+
+    /*
+    JS中的`this`代表的是当前行为执行的主体（方法，函数，事件...）
+JS中的上下文（`context`）代表的是当前行为执行的环境（区域）
+例如： 小明在沙县小吃吃蛋炒饭。 `this->小明` ，`context->沙县小吃`
+小明可以在沙县小吃吃，也可以在其他地方吃。上下文环境可以变化。而吃的主体小明是不变的。
+`this`和`context`是没有必然联系。
+    */
+
+    // this是谁，和函数在哪里定义，在哪里执行都没有任何的关系。和执行主体有关系。
+    // 如何判断执行主体？
+
+    // 1. 函数执行，首先看函数名前面是否有`.`,有的话，`.`前面是谁，this就是谁；没有的话this就是window
+
+    function fn() {
+      console.log(this);
+    }
+    var obj = {
+      fn: fn
+    }
+    fn(); // fn中的this， window
+    obj.fn(); // fn中的this， obj
+
+    function sum() {
+      fn(); // fn中的this，window
+    };
+    sum();
+
+    var o = {
+      sum: function() {
+        fn(); // fn中的this，window
+      }
+    }
+    o.sum();
+
+    // 2. 自执行函数中的this，指代window
+
+    // 3. 给元素的某一事件绑定方法，当事件触发的时候，执行对应的方法，方法中的this是当前的元素.
+
+    document.getElementById('div1').onclick = function() {
+      console.log(this); // 当前DOM对象
+    }
+
+
+  </script>
+
+</body>
+</html>

@@ -17,10 +17,10 @@
       // in："num" in window 判断num是否为window这个对象的一个属性，是的话返回true，不是返回false
 
       // 预解析的时候不管你的条件是否成立，都要把带var的进行提前声明
-      // if (!('num' in window)) { // 预解析，var num --> window.num  // 'num' in window 为true
-      //   var num = 12;
-      // }
-      // console.log(num);  // undefined
+      if (!('num' in window)) { // 预解析，var num --> window.num  // 'num' in window 为true
+        var num = 12;
+      }
+      console.log(num);  // undefined
 
 
 
@@ -42,25 +42,25 @@
 
       // 自执行函数：定义和执行一起完成
       // 自执行函数在全局作用域下不解释，当代码执行到当前位置的时候定义和执行一起完成了。
-      // (function(num) {})(100);
-      // ~function(num) {}(100);
-      // !function(num) {}(100);
-      // +function(num) {}(100);
-      // !function(num) {}(100);
+      (function(num) {})(100);
+      ~function(num) {}(100);
+      !function(num) {}(100);
+      +function(num) {}(100);
+      !function(num) {}(100);
 
 
 
 
       // 函数体中reutrn下面的代码虽然不在执行了，但是需要进行预解析
       // return 后边的函数是返回值，并不需要预解析。
-      // function fn() {
-      //   console.log(num); // undefined
-      //   return function aa() { console.log(this); } // return 跟着的语句不会预解析
-      //   var num = 100;
-      // }
+      function fn() {
+        console.log(num); // undefined
+        return function aa() { console.log(this); } // return 跟着的语句不会预解析
+        var num = 100;
+      }
 
-      // var t = fn();
-      // console.log(t());
+      var t = fn();
+      console.log(t());
 
 
 

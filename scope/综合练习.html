@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var num = 20;
+    var obj = {
+      num: 30,
+      fn: (function(num) {
+        this.num *= 3; // this.num = 20; // 60
+        num += 15; // 20 += 15; // 35  // 60 += 15 // 75
+        return function() {
+          this.num *= 4; // 30 // 120
+          num += 20; // 75+=20
+          console.log(num); // 95
+        }   
+      })(num)
+    };
+
+    var fn = obj.fn; 
+    fn(); // window，// 60 * 4 // 35 += 20 // 55
+    obj.fn(); // 75
+    console.log(window.num, obj.num); // 240, 120
+
+  </script>
+
+</body>
+</html>

@@ -19,10 +19,21 @@
     // var -> 在预解析的时候只是提前声明了
     // function -> 在预解析的时候提前的声明了 + 定义 都完成了。
 
+    // var num = 23;
+    // var obj = {age: 3};
+    // function fn() {
+    //   console.log('log~');
+    // }
 
     // 预解析只发生在当前的作用域下进行解析。
     // 一开始只会对widnow环境下的进行预解析，只有函数执行的时候才会对函数中的进行解析
 
+    var num = 12;
+    var obj = {age: 10};
+    function fn(num1, num2) {
+      var num = num1 + num2;
+      console.log(num);
+    }
 
 
     // JS内存的分类
