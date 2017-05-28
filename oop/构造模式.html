@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+      function createJsPerson(name) {
+        this.name = name;    
+        this.sayName = function() {
+          console.log(this, 'this');
+          console.log(this.name);
+        }
+        console.log(this, 'this-wrap');
+      }
+
+      var f1 = new createJsPerson('l');
+      f1.sayName();
+
+      // 构造函数模式和工厂模式的区别？
+      // 1. 执行方式不同
+      // 普通方式执行 `函数名()`
+      // 构造函数通过`new函数名()` 通过new执行后，定义函数称之为类.
+
+
+      // JS中所有的类都是函数数据类型的，它通过new执行变成了一个类，但是它本身也是一个普通的函数
+      // JS中所有的实例都是对象数据类型的。
+
+      // 在构造函数当中， 类中（函数中）出现的this.xxx = xxx; this指代当前类的一个实例
+
+      // 不同实例之间的方法和属性是不同的。
+      // 在类中给实例增加的属性（this.xxx = xxx）属于当前的私有属性，实例和实例之间是单独的个体，所以私有的属性之间是不相等的.
+
+
+      
+    </script>
+
+</body>
+</html>

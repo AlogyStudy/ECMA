@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /**
+      工厂模式
+      把实现同一件事情的相同代码放到一个函数中,实现当前这个功能，不需要从新编写这写代码，只需要执行当前的函数即可.
+    */
+    function Persion(name, age) {
+      var obj = {};
+      obj.name = name;
+      obj.age = age;
+      obj.writeJs = function() {
+        console.log(this.name);
+      }
+      return obj;
+    }
+
+
+    // JS是一门轻量级的脚本"编程语言"（HTML+CSS不属于编程语言，属于标记语言） 
+    // .net C# php java C C++ vb vf python ruby Object-C swrif Go ... 
+    // 所有的编程语言都是面向对象开发的. --> 类的继承，封装，多态.
+
+
+    // 继承：子类继承父类中的属性和方法
+
+    // 多态：当前方法的多种形态
+    // 后台语言中,多态包含重载（方法名相同，参数不同，参数不同包含：参数类型和参数个数）和重写 
+    // JS 不存在重载，方法名一样的话，后面的会把前面的覆盖掉，最后只保存一个。 // 3year，6year  // 5year，8year，10year
+    // 重写：子类重写父类的方法
+
+    // 封装：函数的封装，作用：低耦合，高内聚。
+
+  </script>
+
+</body>
+</html>

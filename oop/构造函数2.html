@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // function Fn() {
+    //   var num = 10;
+    //   this.x = 10;
+    //   this.getX = function() {
+    //     // 需要看getX执行时候才知道.
+    //     console.log(this, 'this');
+    //     console.log(this.x);
+    //   }
+    // }
+
+    // var f1 = new Fn();
+    // f1.getX(); // 方法中的this是f1 --> 100
+    // console.log(f1.num); // undefined
+
+    // var ss = f1.getX; // 方法中的this是window  --> undefined
+    // ss();
+
+
+    function Fn() {
+      this.x = 10;
+      this.getX = function() {
+        console.log(this.x);
+      }
+    }
+
+    var f1 = new Fn();
+
+    // in 判断全部，
+    // hasOwnPrototype  私有属性
+
+    // 思考：检测某一个属性是否为该对象的"共有属性"
+    function hasPubPrototy(obj, attr) {
+      return (attr in obj) && !obj.hasOwnPrototype(attr);
+    }
+
+  </script>
+
+</body>
+</html>
