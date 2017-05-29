@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function Fn() {
+      this.x = 100;
+      this.y = 200;
+      this.z = 300;
+    }    
+
+    // 别名
+    // var pro = Fn.prototype; // 把原来原型指向的地址赋值给pro变量，操作同一个内存空间
+    // pro.getX = function() {
+    //   console.log(this.x);
+    // }
+    // pro.getY = function() {
+    //   console.log(this.y);
+    // }
+    // pro.getZ = function() {
+    //   console.log(this.y);
+    // }
+
+    // 重构原型对象
+    // function Fn() {
+    //   this.x = 100;
+    //   this.y = 200;
+    //   this.z = 300;
+    // }    
+    // Fn.prototype = {
+    //   constructor: Fn,
+    //   x: function() {
+    //     console.log(this.x);
+    //   },
+    //   y: function() {
+    //   },
+    //   z: function() {
+    //   }
+    // }
+
+    // var f1 = new Fn();
+    // console.log(f1.constructor); // Fn
+
+    // f1.x();
+
+
+    // 使用Fn.prototype重新指向的方式给内置类加共有方法.
+    // Array.prototype.unique = function() {
+      
+    // }
+
+    // Array.prototype = {
+    //   construcotr: Array,
+    //   unique: function() {
+
+    //   }
+    // }
+    // console.log(Array.prototype);
+    // 这种方式会把已经存在原型上的共有方法替换掉，所以使用`修改Fn.prototype指向的方法`修改内置类的话，浏览器是屏蔽掉的
+
+
+    var arr = [];
+    arr.sort();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    function Fn() {
+      this.x = 100;
+      this.y = 200;
+      this.getY = function() {
+        console.log(this.y);
+      }
+    }
+
+    Fn.prototype = {
+      constructor: Fn,
+      y: 300,
+      getX: function() {
+        console.log(this.x);
+      },
+      getY: function() {
+        console.log(this.y);
+      }
+    }
+
+    var f = new Fn();
+    f.getX(); // 100
+    f.__proto__.getX(); // undefiend
+    Fn.prototype.getX(); // undefined
+
+    f.getY(); // 200
+    f.__proto__.getY(); // 300
+    Fn.prototype.getY(); // 300
+
+
+    Array.prototype.myUint = function() {
+      // this
+    }
+
+    var arr = [123, 12, 2, 34, 231, 324234];
+    arr.myUint(); // myUint 中的this是arr
+
+    Array.prototype.myUint(); // myUint 中的this是Array.prototype
+
+    var arr = [123, 12, 2, 34, 231, 324234];
+    // 数组去重
+    Array.prototype.Unique = function() {
+      // this
+      var obj = {};
+      for (var i=0; i<this.length; i++) {
+        var current = this[i];
+        if (obj[current] == current) {
+          // 去除重复项
+          current = this[this.length-1];
+          this.length--;
+          i--;
+          continue;  
+        }
+        obj[current] = current;
+      }
+      obj = null;
+    }
+
+    arr.Unique();
+
+    arr.sort(function(a, b) { return a-b; }).reverse().pop();
+    // 链式写法：
+    // arr为什么可以使用sort方法？
+    // 因为sort是Array.prototype上的公有方法，而数组arr是Array这个类的实例，所有arr可以使用sort方法. --> 数组才能使用我们Array原型上定义的属性和方法
+
+
+    // slice(n, m);
+    // slice(n);
+    // slice();
+    // n和m是负数
+    // n<m是什么情况
+    // n 和 m超过数组的长度
+    // n 和m不是有效数字
+    // 实现链式写法
+
+    // 不能使用数组内置方法，比如不能使用push，而使用arr[arr.length-1] = xxx;
+    Array.prototype.mySlice = function() {
+
+    }
+
+
+    // 实现是需求
+    // (5).plus(10).reduces(2) // 5+10-2 // 13
+    Number.prototype.plus = function(n) {
+      console.log(this);
+      return this + n;
+    }    
+    Number.prototype.reduces = function(n) {
+      return this-n;
+    };
+    (5).plus(10).reduces(2); // 13
+ 
+
+  </script>
+
+  
+</body>
+</html>

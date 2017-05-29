@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    Object.prototype.test = function() {}
+    var obj = {name: 'ss', age: 10};
+
+    for (var key in obj) {
+      if (obj.prototypeIsEnumerable(key)) {
+        console.log(obj[key]);
+      }
+    }
+    // for-in 循环只遍历私有属性和自定义共有属性（默认可以把自己私有属性和它所属类的原型上扩展的属性和方法都可以枚举/遍历到）,但是一般情况下只需要遍历私有属性。
+    // prototypeIsEnumerable(); 判断可枚举的私有属性
+
+    for (var key in obj) {
+      if (obj.hasOwnPrototype(key)) {
+        console.log(obj[key]);
+      }
+    }
+
+  </script>
+
+</body>
+</html>

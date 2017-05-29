@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="div1"></div>
+
+  <script>
+
+    console.log(document.querySelector('#div1'));
+
+    /**
+      原型继承
+    */
+
+    // #div1.__proto__ -> HTMLDivElement.prototype -> HTMLElement.prototype -> Element.prototype -> Node.prototype -> EventTarget.prototype(DOM二级事件) —> Object.prototype
+
+    // function _Object() {}
+
+    // _Object.prototype = {
+    //   constructor: Object,
+    //   hasOwnPrototype: function() {},
+    //   toString: function() {}
+    // }
+
+    // function _EventTarget() {}
+    // _EventTarget.prototype = new _Object();
+    // _EventTarget.prototype.addEventListener = function() {}
+
+    // function _Node() {}
+    // _Node.prototype = new _EventTarget();
+    // _Node.prototype.createElement = function() {}
+
+    // var node = new _Node();
+
+    // 子类的原型 等于 父类的实例
+
+
+
+    function A() {
+      this.x = 100;
+    }
+    A.prototype.getX = function() {
+      return this.x;
+    }
+
+    function B() {
+      thix.x = 200;
+    }
+    B.prototype = new A();
+
+    var b = new B();
+
+  </script>
+
+</body>
+</html>

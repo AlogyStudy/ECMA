@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+  function A() {
+    this.x = 100;
+  }
+  A.prototype.getX = function() {
+    return this.x;
+  }
+
+  function B() {
+    A.call(this);
+  }
+  B.prototype = Object.create(A.prototype); // 父类的原型给了子类的原型
+  B.prototype.constructor = B;
+
+  var b = new B();
+
+  </script>
+
+</body>
+</html>
