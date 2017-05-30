@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var arr = [123, 11, 121];
+
+    Array.prototype.unique = function unique() {
+      var obj = {};
+      for (var i=0; i<this.length; i++) {
+        var current = this[i];
+        if (obj[current] == current) {
+          this[i] = this[this.length-1]; // 12 121
+          this.length--;
+          i--;
+          continue;
+        }
+        obj[current] = current;
+      }
+      obj = null;
+      return this;
+    }
+
+    // arr.pop(); // this -> arr
+    // console.log(arr);
+
+    // arr.__proto__.pop(); // this -> arr.__proto__ == Array.prototype
+    // console.log(arr);
+
+
+  </script>
+
+</body>
+</html>

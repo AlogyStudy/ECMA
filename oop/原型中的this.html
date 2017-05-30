@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // function Fn() {
+    //   this.x = x;
+    //   this.y = y;
+    // }
+
+    // Fn.prototype.getX = function() {
+    //   console.log(this.x);
+    // }
+    // Fn.prototype.getY = function() {
+    //   console.log(this.y);
+    // }
+
+    // var f1 = new Fn();
+    // var f2 = new Fn();
+
+
+
+    function Fn() {
+      this.x = 100;
+      this.getX = function() {
+        console.log(this.x);
+      }
+    }
+
+    Fn.prototype.getX = function() {
+      console.log(this.x);
+    }
+    Fn.prototype.setX = function(n) {
+      this.x = n;
+    }
+
+    var f1 = new Fn();
+    var f2 = new Fn();
+
+    f1.getX(); // 100
+    f1.__proto__.getX(); // this->f1.__proto__, console.log(f1.__proto__.x); // undeinfed
+    Fn.prototype.setX(300); // this--> Fn.prototype, Fn.prototype.x = 300 // 在公有增加x属性
+    f1.getX(); // 100
+    f1.__proto__.getX(); // 300
+    f1.setX(500); // 修改私有属性x
+    f1.getX(); // 500
+    f1.__proto__.getX(); // 300
+
+
+    f1.y = 1000; // 给f1本身增加一个私有属性和f2没有关系
+    f1.__proto__.y = 2000; //  在原型上增加一个y=1000，f2也可以获取y的值。
+
+  </script>
+</body>
+</html>
