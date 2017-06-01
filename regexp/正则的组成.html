@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var reg = /\d/;
+
+    // 每个表达式都是由元字符和修饰符组成的
+    // 元字符
+    // 在`//`之间具有意义的一些字符
+
+    var reg = /^\d$/;
+    console.log(reg.test('12')); // false
+    console.log(reg.test('1')); // true
+
+    // `\` 转义字符
+    // `^` 以某一个元字符开始
+    // `$` 以某一个元字符结尾
+    // `\n` 匹配一个换行符
+    // `.` 除了`\n`以外的任意字符
+
+    var reg = /^0.2$/;
+
+    var reg = /^0\.2$/;
+
+  </script>
+
+</body>
+</html>

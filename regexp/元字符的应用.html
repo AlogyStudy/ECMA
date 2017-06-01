@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 有效数字正则 , 整数，负数，0，小数 // 12, 12.1, -12, +12, 0.2, // 不是有效数字情况：09 ，00ffxx, 0011
+    // 1. "."可以出现也可以不出现，但是一旦出现，后面必须跟着一位或者多位数字
+    // 2. 最开始可以有+/-，也可以没有
+    // 3. 整数部分，一位数可以是0-9之间的一个，多位数不能以0开头。
+
+    var reg = /^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;  
+
+    // var reg = /^(+|-)?  \.?/;
+
+    // var reg = /^(\d|([1-9]\d+))$/;
+
+
+    // var reg = /^[+-]?[\d|^0\d+]  \.?/;
+
+    var reg = /^[+-]?(\d|([1-9]\d+))(\.\d+)?$/;
+
+
+  </script>
+
+</body>
+</html>
