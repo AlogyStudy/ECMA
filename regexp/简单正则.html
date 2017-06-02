@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 匹配年龄 , 年龄介于18-65之间
+    var reg = /^(1[8-9])([2-5]\d)(6[0-5])$/; // 18-19 20-59 60-65
+    var reg = /^(1[8-9]|[2-5]\d|6[0-5])$/;
+
+    
+    var reg = /^[18-65]$/; // [0-9]
+    var reg = /^[12]$/; // 1或2中的其中一个
+    var reg = /^[12-68]$/; // （1, 2-6其中的一个，8，）其中的一个
+    // 数字，字母，下划线，中杆
+    var reg = /^[\w-]$/; 
+
+
+    // 验证邮箱
+    // 1. 不少于六位
+    // 2. @字符
+    // 3. 数字字符，不少于三位
+    // var reg = /^\w{6,}@\d{3,}\.com(\.cn)?$/;
+
+    // `@`分割，左边：数字，字母，下划线，.，-
+    var reg = /^[\w.-]+@[0-9a-zA-Z]+(\.[a-zA-Z]{2,4}){1,2}$/;
+
+    
+
+    // 身份证号码验证
+    var reg = /^\d{17}(\d|X)$/;
+    
+    
+
+  </script>
+
+</body>
+</html>
