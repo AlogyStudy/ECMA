@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<body>
-  
-  <script>
 
+<body>
+
+  <script>
     // exec
-    var reg = /\d+/;
-    var str = 'sf11';  
-    console.log(reg.exec(str));
+    // var reg = /\d+/;
+    // var str = 'sf11';
+    // console.log(reg.exec(str));
 
     /*
       exec分为两个阶段：
@@ -22,7 +23,44 @@
       如果匹配成功，默认匹配第一匹配的内容
     */
 
+    // 全局修饰符
+    // var reg = /\d+/g;
+    // var str = 'sf2017aaa2018';  
+    // var res = reg.exec(str);
+
+    // var arr = [];
+    // while(res) {
+    //   arr.push(res[0]);
+    //   res = reg.exec(str);
+    // }
+
+
+    // > 贪婪性： 正则的每次捕获都是按照匹配最长的结果捕获的。
+
+    // var reg = /\d+/g;
+    // var str = 'sf2017aaa2018';
+    // var res = reg.exec(str);
+    // console.log(res);
+
+    // 例如： 2符合正则 2017也符合，默认捕获的是2017
+
+    // 解决正则的贪婪性
+    // 只需要匹配2,而不需要匹配2017
+
+    // var reg = /\d+?/g;
+    // var str = 'sf2017aaa2018';
+    // var res = reg.exec(str);  
+    // console.log(res);
+
+
+    // match
+    var reg = /\d+/g;
+    var str = 'sf2017aaa2018';
+    var arr = str.match(reg);
+    console.log(arr); // ["2017", "2018"]
+
   </script>
 
 </body>
+
 </html>
