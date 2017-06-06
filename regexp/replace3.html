@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // replace: 将原有的字符串替换成需要字符串
+    // 1. 正则表达式捕获到几次，对应后面的function就要执行几次。
+    // 2. 每一次执行function的时候，都可以获取捕获的内容 和 单独执行一次exec捕获的内容一致
+    
+    var str = 'zf-2016, LVE-zf';
+    // str = str.replace('zf', '志芳').replace('zf', '志芳');
+    // console.log(str);
+
+    // var reg = /zf/g;
+    // str = str.replace(reg, '志芳');
+
+    // console.log(str);
+
+
+    // 获取一个字符串中出现次数最多的字符
+    var str = 'abaaaasdffasd';
+    var reg = /\w+?/gi;
+    
+    var obj = {};
+    str.replace(reg, function($0) {  
+
+      if (obj[$0] >= 1) {
+        obj[$0] += 1;
+      } else {
+        obj[$0] = 1;
+      }
+
+      // console.log($0);    
+      // debugger;
+      // // current = $0; //  a 
+      // if (current == $0) { // 
+      //   num++;
+      //   res = $0;
+      // } else {
+      //   current = $0;
+      // }
+    });
+    console.log(obj);
+    // 获取最大的，出现字符最多的。 
+    // 在对象中获取出现最多次数，把出现最多字符拿出。
+
+    // 在一个对象获取最大值: 假设法
+    // 在数组中获取最大值：1. 排序。 2. 假设法， 3. Math.max();
+
+    // 获取最多出现的次数
+    var maxNum = 0;
+    for (var i in obj) {
+      if (obj[i] > maxNum) {
+        maxNum = obj[i];
+      }  
+    }
+
+    // 获取所有符合出现maxNum次数的都获取到
+    var resArr = [];
+    for (var key in obj) {
+      if (obj[key] == maxNum) {
+        resArr.push(key);
+      }
+    }
+    console.log(maxNum, resArr.toString());
+
+
+  </script>
+
+</body>
+
+</html>

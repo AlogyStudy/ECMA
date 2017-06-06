@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var str = 'my name is {0}, my age is {1}';
+    var arr = ['zf', 'age'];
+
+    // 在捕获的时候，不仅要获取{0},而且还要获取里面的数字0，并且每一次exec执行捕获的时候，同时捕获这两个
+    var reg = /{(\d+)}/g;
+    var res = reg.exec(str);
+    console.log(res);
+    str = str.replace(reg, function($0, $1) {
+      return arr[$1];
+    });
+    console.log(str);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+
+    // replace : 把原有字符替换成新的字符串
+    // 在不使用正则的情况下，每当执行一次只能替换一个字符
+
+    // var str = 'xixi2017xixi2018';
+
+    // str = str.replace(/xixi/g, 'zf');
+
+    // console.log(str);
+
+
+    // var str = 'xixi2017xixi2018';
+    // str = str.replace(/xixi/g, function() {
+    //   console.log(arguments);
+    // });
+
+
+
+    // var str = 'xixi2017xixi2018';
+    // str = str.replace(/\d+/g, function() {
+    //   // console.log(arguments); 
+    //   // ["2017", 4, "xixi2017xixi2018", callee: function, Symbol(Symbol.iterator): function] 
+    //   // ["2018", 12, "xixi2017xixi2018", callee: function, Symbol(Symbol.iterator): function]
+    //   return 222222; // 返回的值，把每次大正则匹配捕获的内容都替换该值
+    // });
+    // console.log(str); // xixi222222xixi222222
+
+
+
+    var str = 'xixi2017xixi2018';
+    var reg = /(\d+)/g;
+    str = str.replace(reg, function() {
+      // console.log(RegExp.$1); // RegExp.$1 获取第一个分组捕获的内容
+      return 222222; // 返回的值，把每次大正则匹配捕获的内容都替换该值
+    });
+    console.log(str); // xixi222222xixi222222
+
+  </script>
+
+</body>
+</html>
