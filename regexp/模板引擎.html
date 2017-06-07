@@ -18,9 +18,34 @@
     var res = reg.exec(str);
     console.log(res);
     str = str.replace(reg, function($0, $1) {
-      return arr[$1];
+      return arr[$1]; // arr[RegExp.$1] IE下不兼容
     });
     console.log(str);
+
+
+    // 思考:
+    // 1. "2017-6-7 23:43:12" --> "2017年06月07日  23时:43分12秒"
+    // 2. 把一个字符串中所有的单词首字母大写  "module view controller" --> "Moudel  View Controller"
+    // 3. url 处理参数
+
+    var url = 'http://www.weibo.com/u/5688069917?pids=Pl_Official_MyProfileFeed__21&profile_ftype=1&is_all=1#_0';
+    var reg = /([^?=&]+)=([^?=&]+)/g;
+    var res = reg.exec(url);
+
+    var obj = {};
+    url.replace(reg, function($0, $1, $2) {
+      obj[$1] = $2;
+    });
+    console.log(obj); // Object {pids: "Pl_Official_MyProfileFeed__21", profile_ftype: "1", is_all: "1#_0"}
+
+    // var obj = {};
+    // while(res) {
+    //   obj[res[1]] = res[2];
+    //   res = reg.exec(url);
+    // }
+
+    // console.log(obj);
+
 
   </script>
 
