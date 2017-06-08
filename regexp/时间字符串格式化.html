@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // "2017-6-7 23:43:12" --> "2017年06月07日  23时:43分12秒"
+
+        var str = '2017-6-7 23:43:12';
+        // 方法一： 字符串变数组， 通过空格，拆成两项 // ['2017-6-7', '23:43:12'] 
+        var arr1 = str.split(' ');
+        var arrL = arr1[0].split('-'); // ["2017", "6", "7"]
+        var arrR = arr1[1].split(':'); // ["23", "43", "12"]
+
+        // 方法二： 时间格式字符串，变成时间格式对象 通过new Date();
+        var d = new Date(str.replace('-', '/').replace('-', '/')); // 然后通过 时间对象的操作方式 来操作
+        // ie 浏览器中，不识别 '-' , 需要替换成 '/'
+
+        // 方法三： 正则方式, 模板匹配的方式 . 设定好目标格式，把数组中固定的项替换成指定的区域内.
+        var str = '2017-6-7 23:43:12', resStr = '{0}年{1}月{2}日  {3}时:{4}分{5}秒';
+        // var reg1 = /\d+/g;
+        // var arrDate = str.match(reg1);
+        var reg1 = /^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2}) +(\d{1,2}):(\d{1,2}):(\d{1,2})$/g;
+        var arrDate = [];
+        str.replace(reg1, function() {
+            // arrDate = [].slice.call(arguments);
+            arrDate = Array.from(arguments);
+            arrDate = arrDate.slice(1, 7);
+        });
+        // console.log(arrDate);
+        // var arrDate = ['2017', '6', '7', '23', '43', '12'];
+        var reg = /{(\d)}/g;
+        resStr = resStr.replace(reg, function($0, $1) {
+            var num = arrDate[$1];
+            return num < 10 ? '0' + num : num;
+        });
+        console.log(resStr); // 2017年06月07日  23时:43分12秒
+    </script>    
+
+</body>
+</html>
