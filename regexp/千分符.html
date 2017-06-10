@@ -43,6 +43,7 @@
     console.log(str);
 
     // 方法3
+    // 倒序处理
     str = str.split('').reverse().join('');
     str = str.replace(/(\d{3}(?!$))/g, '$1,');
     str = str.split('').reverse().join('');
