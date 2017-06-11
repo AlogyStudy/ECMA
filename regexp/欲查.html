@@ -14,17 +14,53 @@
 
     /*
 
-    (?=exp) 
+    (?=exp)  （本身不占宽度，肯定的，向前看）
     (?!exp)
     (?<=exp)
     (?<!exp)
 
-
     (?:) 只匹配，不捕获
-    (+?) (*?) ({}?) 贪婪性
+    (+?) (*?) ({}?) 非贪婪性
     []?  ()?  \d?   0次或1次
-    
+
     */
+
+    // 【量词】 `?`在正则中比较低调，作为量词的几率比较少。
+    var str = '-3.1415';
+    var reg = /^(\+|-)?\d+(\.\d+)?$/;   // /^$/ 表示严格匹配
+    var reg = /^[+-]?\d+(\.\d+)?$/;
+
+    // 【匹配不捕获】 (?:) 前提：问号要放在分组前面，并且后边紧跟冒号。
+    var reg = /^(?:\+|-)?\d+(?:\.(\d+))?$/;   // /^$/ 表示严格匹配
+
+    // 【非贪婪性】 把问号放在量词后边： +? *? {}?  (+?) (*?) ({}?)   // 正则的特点: 懒惰，贪婪。
+    var reg = /\d+/;
+    var str = 'abc2342xyz236asdf456456';
+    console.log(str.match(reg));
+    // str.replace(reg, function() {
+    //   console.log(arguments);
+    // });
+
+    var reg = /(\d+)/;
+    reg.test(str); // 匹配的存储在构造函数上RegExp.$1; 构造函数上有九个来存储匹配到值
+    console.log(RegExp.$1);
+
+    var str = 'abc2342xyz236asdf456456';
+    var reg = /(\d+)/g; // 当正则加了模式修饰符`g`之后，每匹配一次，则修改一次lastIndex(记录下一次开始匹配的位置)属性的值.
+    reg.exec(str);
+    console.log(reg.lastIndex, 'lastIndex');
+    reg.test(str);
+    console.log(reg.lastIndex, 'lastIndex');
+    // console.log(str.match(reg));
+    // reg.lastIndex = 7;
+    console.log(RegExp.$1); // 2342
+    // console.log(reg.lastIndex);
+    // 如何预防索引值的问题。注意lastIndex的值。 lastIndex 是可读写的属性。 可以手动置为零
+
+    // match和 exec ，在模式修饰符`g`的影响下，match是不会有子正则。
+
+    
+
   </script>
 
 </body>

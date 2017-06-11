@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+
+    // 正向欲查
+    // (?!exp) Zero-width positive lookahead(本身不占宽度，肯定的，向前看)
+    // 正则中的断言Assert   前提， 前提条件
+
+    // var str = '123456789';
+    // str = str.split('').reverse().join('').replace(/\d{3}(?!.)/g, function() {
+    //   console.log(arguments);
+    //   return arguments[0] + ','
+    // }).split('').reverse().join('');
+    // console.log(str);
+
+    var str = '13456789';
+    var reg = /(\d)(?=(?:\d{3})+$)/g; // $ 匹配到结尾
+    str = str.replace(reg, function() {
+      console.log(arguments);
+      return arguments[0] + ',';
+    }).replace(reg, '$1,');
+    console.log(str);
+
+
+    // 去重
+    var str = 'aaaabbbbbbbbbbbbbbccccccccccccccc';
+    var reg = /(\w)\1+/g;
+    str = str.replace(reg, '$1');
+    console.log(str);
+
+  </script>
+
+</body>
+</html>
