@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // JS是单线程. (做着当前的这件事情，没有完成之前，绝对不会做下一件事情)
+
+    // JS中的两种编程思想：同步，异步。
+
+    // 同步-->上一件事情没有完成，继续处理上一件事情，只有上一件事情完成了，才会做下一件事情（JS中大部分都是同步编程的）
+
+    // 异步-->规划一件事情，但不是当前立马执行，需要等待一段时间，这样情况下，并不会等待执行，而是继续执行接下去的操作，
+    // 只有接下去执行处理完成了，才会返回头执行; 如果接下去执行的操作没有完成，不管之前的事情有没有到执行时间，需要等待执行。
+
+    // 在JS中异步编程只有四种情况：
+    // 定时器，AJAX，事件绑定，回调函数
+
+    // var n = 10;
+    // window.setTimeout(function() {
+    //   n++;
+    //   console.log(n);
+    // }, 1000);
+    // console.log(n);
+
+    // 10  11
+
+
+    // 浏览器对于定时器的最小值都有自己的标准。
+    // var n = 10;
+    // window.setTimeout(function() {
+    //   n++;
+    //   console.log(n);
+    // }, 0);
+    // console.log(n);
+
+    // 10  11 
+
+
+    // 定时器设置的等待时间不一定就是最后的执行时间，如果定时器之后还有其它事情处理中，不管定时器的时间是否到达，都不会执行定时器中的函数
+    // var n = 10;
+    // window.setTimeout(function() {
+    //   n++;
+    //   console.log(n);
+    // }, 0);
+    // console.log(n);
+    // while(1) {
+    //   n++;
+    // }
+    // console.log(n);
+
+    // 输出一次  10
+
+
+
+    var n = 10;
+    window.setTimeout(function() {
+      n += 2;
+      console.log(n);
+    }, 20);
+    window.setTimeout(function() {
+      n += 5;
+      console.log(n);
+    }, 5);
+    console.log(n);
+    for (var i=0; i<1000000; i++) {
+    }
+    console.log(n);
+
+    // 10
+    // 10
+    // 15
+    // 17
+
+
+    // 异步编程队列（任务队列池）
+    // 在按行执行完成之后， 执行任务返回头执行，按照任务队列池中的顺序执行
+    
+  </script>
+  
+</body>
+</html>
