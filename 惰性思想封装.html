@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 作用： 优化经常被调用的函数
+    // 假如同一个函数被大量范围，并且这个函数内部又有许多判断来来检测函数，
+    // 这样对于一个调用会浪费时间和浏览器资源，所有当第一次判断完成后，直接把这个函数改写，不在需要判断。
+
+    // 惰性思想：第一次在给utils赋值的时候我们就已经把兼容性处理好了，把最后的结果存放在flag变量中，以后再
+    // 每个方法中，只要是ie6,7,8,不兼容的，不需要重新的检测， 只需要使用flag的值即可。
+    var utils = (function() {
+      // 统一通过一个变量来检测 ie 6,7,8.
+      var flag = 'getComputedStyle' in window; // flag存储的变量不销毁，存储的是当前浏览器是否兼容getComputedStyle。 false，当前浏览器是ie6，7，8
+      return {
+        listToArray: function(likeArr) {
+          // var arr = [];
+          // try {
+          //   arr = Array.prototype.slice.call(likeArr, 0);
+          // } catch(e) {
+          //   for (var i=0; i<linkArr.length; i++) {
+          //      arr[arr.legnth]  = linkArr[i];
+          //   }
+          // }  
+          // return arr; 
+
+          if (flag) {
+            return Array.prototype.slice.call(likeArr, 0);
+          }
+          var arr = [];
+          for (var i=0; i<linkArr.length; i++) {
+            arr[arr.legnth]  = linkArr[i];  
+          }
+          return arr;
+        },
+        formatJSON: function(jsonStr) {
+          if (flag) {
+            return eval('(' + jsonStr + ')');
+          }
+          return JSON.parse(jsonStr);
+          // return "JSON" in window ? JSON.parse(jsonStr) : eval('(' + jsonStr + ')');
+        }
+      }
+    })();
+
+  </script>
+
+</body>
+</html>
