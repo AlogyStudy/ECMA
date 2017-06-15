@@ -10,7 +10,7 @@
   
 
   <script>
-    // 回调函数/柯里化函数
+    // 回调函数
 
     // forEach：用来遍历数组中的每一项
     // 1. 数组中有几项，那么传递进去的匿名回调函数就需要执行几次。
@@ -56,8 +56,32 @@
       // IE6-8,执行回调逻辑
       for (var i=0; i<this.length; i++) {
         callback || callback.call(context, this[i], i, this);
-      } 
+      }
     }
+
+
+    Array.prototype._map = function(callback, context) {
+      context = context || window;
+      if ('map' in Array.prototype) {
+        this.map(callback, context);
+        return;
+      } 
+      // IE6-8,执行回调逻辑
+      var resArr = [];
+      for (var i=0; i<this.length; i++) {
+        if (typeof callback === 'function') {
+          resArr[resArr.length] = callback.call(context, this[i], i, this);
+        }
+      }
+      return resArr;
+    }
+
+    var arr = [10, 234, 23, 76, 7666, 34];
+    arrMap = arr._map(function(item, index, input) { // 原有数组不变
+      // console.log(arguments, '_map');
+      return item * 100;
+    });
+    console.log(arrMap);
 
   </script>
 
