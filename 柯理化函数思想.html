@@ -22,15 +22,22 @@
     function bind(callback, context) {
       context = context || window;
       var outArg = Array.prototype.slice.call(arguments, 2);
-      return function() {
-        callback.apply(context, outArg);
+      return function(ev) {
+        var innerArg = Array.prototype.slice.call(arguments, 0);
+        callback.apply(context, outArg.concat(innerArg));
       }
     }
 
+    // document.body.onclick = fn; // fn 中的 this是document.body. num1是 MouseEven对象
+    document.body.onclick = fn.bind(obj, 100, 200); // 除了预先处理了this和需要手动传递的参数值以外，把浏览器默认给传递的鼠标事件对象也进行预先处理，传递到最后一个参数。
+    document.body.onclick = bind(obj, 100, 200)
+    // document.body.onclick = function() {
+      // console.log(this); // this -->  document.body
+    // }
+
     // window.setTimeout(fn.bind(obj), 0);
-    window.setTimeout(bind(fn, obj, 100, 20), 0); // 给定时器绑定方法，然后定时器到达时间的时候，让fn执行，并且让fn中的this变为obj
+    // window.setTimeout(bind(fn, obj, 100, 20), 0); // 给定时器绑定方法，然后定时器到达时间的时候，让fn执行，并且让fn中的this变为obj
 
   </script>
-
 </body>
 </html>
