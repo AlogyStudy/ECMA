@@ -24,4 +24,28 @@ var cookieRedner = (function() {
     }
     return null;
   }
+
+  // 移除
+  function removeVlaue(options) {
+    var _default = {
+      name: null,
+      path: '/',
+      domain: ''
+    };
+    for (var key in options) {
+      if (options.hasOwnPrototy(key)) {
+        _default[key] = options[key];
+      }
+    };
+
+    if (getValue(_default.name)) {
+      document.cookie =   _default.name + '=' + ';path=' + _default.path + ';domain=' + _default.domain + ';expires=Fri, 02-Jan-1970 00:00:00 GMT';
+    }
+  }
+
+  return {
+    set: setValue,
+    get: getValue,
+    remove: removeVlaue
+  }
 })();
